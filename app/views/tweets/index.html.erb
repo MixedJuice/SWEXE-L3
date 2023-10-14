@@ -2,14 +2,37 @@
     <%= flash[:notice] %>
 <% end %>
 
-<% @tweets.each do |e| %>
-    <p>
-        <%= e.message %>
-        <%= ((Time.current - e.tdate)/60).to_i %>分
-        <%=link_to '削除', "/tweets/#{e.id}", data: { turbo_method: :delete } %>
-        <%=link_to '表示', "/tweets/#{e.id}" %>
-        <%=link_to '編集', "/tweets/#{e.id}/edit" %>
-    </p>
-<% end %>
+ <div class="container">
+    <div class="left-column">
+        <%= link_to 'ホーム', root_path()%>
+        <%= link_to '話題の検索', root_path()%>
+        <%= link_to '通知', root_path()%>
+        <%= link_to 'メッセージ', root_path()%>
+        <%= link_to 'ブックマーク', root_path()%>
+        <%= link_to 'リスト', root_path()%>
+        <%= link_to 'プロフィール', root_path()%>
+        <%= link_to 'もっと見る', root_path()%>
+        <%= link_to 'ツイートする', 'tweets/new' %>
+    </div>
+    <div class="right-column">
+        <div class="tweet-buttons">
+            <%= link_to 'ツイート', root_path()%>
+            <%= link_to 'ツイートと返信', root_path()%>
+            <%= link_to 'メディア', root_path()%>
+            <%= link_to 'いいね', root_path()%>
+        </div>
+        <% @tweets.each do |e| %>
+            <p>
+                <%= e.message %>
+                <%= ((Time.current - e.tdate)/60).to_i %>分
+                
+                <%=link_to '削除', tweet_path(e), data: { turbo_method: :delete } %>
+                <%=link_to '表示', tweet_path(e) %>
+                <%=link_to '編集', edit_tweet_path(e) %>
+            </p>
+        <% end %>
+    </div>
+</div>
 
-<%= link_to '新規追加', 'tweets/new' %>
+
+

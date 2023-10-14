@@ -13,3 +13,32 @@
  *= require_tree .
  *= require_self
  */
+
+
+.container {
+    display: flex;
+}
+.left-column {
+    width: 25%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* または space-between */
+    height: 100vh; /* ビューポートの高さに合わせる */
+    overflow: auto;
+    position: fixed;
+    font-size: 30px;
+}
+
+
+.right-column {
+    width: 75%;
+    margin-left: 25%;
+    padding: 10px;
+    font-size: 30px;
+}
+.tweet-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
